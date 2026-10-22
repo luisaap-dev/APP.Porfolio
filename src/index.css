@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/anton-latin.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url('/fonts/manrope-latin-var.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/jetbrains-mono-latin-var.woff2') format('woff2');
+}
+
+/*
+  Paleta. Contraste WCAG medido sobre --color-ink:
+  paper 16.6 · muted 6.3 · signal 3.9 (solo texto grande y elementos gráficos)
+  paper sobre signal 4.3 (solo texto grande) · paper sobre oxblood 10.1
+*/
+:root {
+  --color-ink: #0e0c0b;
+  --color-surface: #1a1615;
+  --color-signal: #d7261e;
+  --color-oxblood: #6e1410;
+  --color-paper: #f1ece6;
+  --color-muted: #9a918a;
+  --color-line: #2e2826;
+
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-ink font-sans text-base text-paper antialiased;
+  }
+
+  ::selection {
+    @apply bg-signal text-paper;
+  }
+
+  /* Foco visible: el rojo cumple 3:1 como indicador gráfico sobre el fondo */
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+
+  /* Sobre los bloques oxblood el rojo no contrasta (2.4:1): el foco pasa a paper */
+  .bg-oxblood :focus-visible {
+    outline-color: var(--color-paper);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Contenedor común: 16px de margen lateral a 360px, crece con min-width */
+  .wrap {
+    @apply mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:px-10;
+  }
+
+  /* Etiqueta técnica en monoespaciada */
+  .eyebrow {
+    @apply font-mono text-label uppercase text-muted;
+  }
+
+  /* Titular display de cartel */
+  .display {
+    @apply font-display uppercase tracking-[-0.01em];
+  }
+
+  /* Enlace de texto subrayado: el subrayado rojo es el indicador, no solo el hover */
+  .text-link {
+    @apply inline-flex min-h-tap items-center gap-2 font-semibold text-paper underline decoration-signal decoration-2 underline-offset-[6px] transition-[text-decoration-thickness] hover:decoration-4;
+  }
+
+  /* Llamada a la acción principal. Texto a 19px en negrita: cuenta como texto grande (4.3:1) */
+  .btn-signal {
+    @apply inline-flex min-h-[3.25rem] items-center justify-center gap-3 bg-signal px-6 text-cta font-bold text-paper transition-colors hover:bg-oxblood;
+  }
+
+  /* Botón claro para usar sobre bloques oxblood */
+  .btn-paper {
+    @apply inline-flex min-h-[3.25rem] items-center justify-center gap-3 bg-paper px-6 text-cta font-bold text-ink transition-colors hover:bg-muted;
+  }
+
+  /* Botón secundario: el borde usa muted para cumplir 3:1 como control */
+  .btn-outline {
+    @apply inline-flex min-h-[3.25rem] items-center justify-center gap-3 border border-muted px-6 text-cta font-bold text-paper transition-colors hover:border-paper;
+  }
+}

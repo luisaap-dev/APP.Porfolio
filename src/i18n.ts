@@ -1,0 +1,343 @@
+import i18n from 'i18next'
+import { initReactI18next } from 'react-i18next'
+import { type Language, normalizeLanguage } from './utils/routes'
+
+const storedLanguage =
+  typeof window !== 'undefined' ? window.localStorage.getItem('portfolio-language') : null
+
+const fallbackLanguage: Language =
+  typeof navigator !== 'undefined' ? normalizeLanguage(navigator.language) : 'es'
+
+const es = {
+  nav: {
+    home: 'Inicio',
+    projects: 'Proyectos',
+    experience: 'Experiencia',
+    education: 'Formación',
+    remoteSupport: 'Soporte remoto',
+    contact: 'Contacto',
+    cv: 'Ver CV',
+    label: 'Navegación principal',
+    skipToContent: 'Saltar al contenido',
+    openMenu: 'Abrir menú',
+    closeMenu: 'Cerrar menú',
+    menu: 'Menú',
+  },
+  language: {
+    es: 'ES',
+    en: 'EN',
+    gl: 'GL',
+    label: 'Idioma',
+  },
+  common: {
+    linkedin: 'LinkedIn',
+    downloadCv: 'Descargar CV',
+    sendEmail: 'Enviar correo',
+    viewSite: 'Ver web',
+    viewCode: 'Ver código',
+    goToGithub: 'Ir a GitHub',
+    downloadRustdesk: 'Descargar RustDesk',
+    contact: 'Contactar',
+    nextSteps: 'Siguientes pasos',
+    profile: 'Perfil',
+    email: 'Correo',
+    location: 'Ubicación',
+    contactMe: 'Contactar conmigo',
+  },
+  home: {
+    title: 'Desarrollo web Full Stack y sistemas: del código a producción.',
+    profileText: 'Disponible para proyectos freelance y nuevas oportunidades.',
+    pageIntroEyebrow: 'Perfil profesional',
+    pageIntroTitle: 'Áreas en las que puedo aportar valor desde el primer día',
+    pageIntroDescription: 'Una combinación de desarrollo web, base técnica y experiencia práctica en entornos reales.',
+  },
+  projects: {
+    eyebrow: 'Proyectos',
+    title: 'Proyectos destacados',
+    description: 'Webs publicadas, aplicaciones Full Stack y proyectos de infraestructura. Algunos proyectos están bajo acuerdo de confidencialidad o no tienen demo pública, por lo que se muestran sin enlace.',
+    moreTitle: 'Más proyectos en GitHub',
+    moreDescription: 'Además de los proyectos publicados, también mantengo repositorios de práctica y desarrollo que ayudan a completar mi perfil técnico. Si quieres revisarlos, puedes acceder directamente a mi GitHub.',
+  },
+  experience: {
+    eyebrow: 'Experiencia',
+    title: 'Trayectoria profesional y competencias técnicas',
+    description: 'Desarrollo web Full Stack, administración de sistemas, infraestructura cloud y soporte técnico en entornos reales de producción.',
+    skillsTitle: 'Stack técnico',
+    timelineTitle: 'Trayectoria profesional',
+  },
+  education: {
+    eyebrow: 'Formación',
+    title: 'Estudios y especialización',
+    description: 'Formación técnica en desarrollo web, sistemas y una actualización reciente en React aplicada a proyectos modernos.',
+  },
+  contact: {
+    eyebrow: 'Contacto',
+    title: 'Disponible para proyectos freelance y nuevas oportunidades',
+    description: 'Si tienes un proyecto web, necesitas desplegar o mantener infraestructura, o buscas un perfil de desarrollo y sistemas para tu equipo, escríbeme y te respondo.',
+    linkedinText: 'Ver perfil profesional',
+    githubText: 'Ver repositorios',
+    remoteTitle: 'Asistencia remota',
+    remoteDescription: 'Para soporte remoto utilizo RustDesk. Si necesitas asistencia técnica a distancia, puedes descargarlo desde su web oficial y preparar la conexión.',
+    remoteInstructions: 'Ver instrucciones de RustDesk',
+  },
+  remoteSupport: {
+    eyebrow: 'Soporte remoto',
+    title: 'Asistencia técnica a distancia con RustDesk',
+    description: 'Cuando necesito conectarme en remoto para revisión o soporte técnico, utilizo RustDesk. Aquí tienes los pasos rápidos para preparar la conexión.',
+    steps: [
+      {
+        title: 'Descargar RustDesk',
+        description: 'Descarga RustDesk desde la web oficial e instálalo en tu equipo antes de iniciar la asistencia remota.',
+      },
+      {
+        title: 'Abrir la aplicación',
+        description: 'Una vez abierto, tendrás visible tu ID y la contraseña temporal de acceso para compartir la conexión.',
+      },
+      {
+        title: 'Enviarme los datos',
+        description: 'Envíame tu ID y la contraseña temporal por correo en el momento de la asistencia.',
+      },
+    ],
+    downloadTitle: 'Descarga y contacto',
+    downloadDescription: 'Puedes descargar RustDesk desde su web oficial y, si necesitas asistencia, escríbeme a',
+  },
+  notFound: {
+    title: 'Página no encontrada',
+    description: 'La página que buscas no existe o ha cambiado de dirección.',
+    backHome: 'Volver al inicio',
+  },
+  cta: {
+    title: '¿Tienes un proyecto en mente?',
+    description: 'Disponible para proyectos freelance y nuevas oportunidades. Escríbeme y te respondo.',
+    allChannels: 'Ver todas las vías de contacto',
+  },
+}
+
+export type TranslationResource = typeof es
+
+const en: TranslationResource = {
+  nav: {
+    home: 'Home',
+    projects: 'Projects',
+    experience: 'Experience',
+    education: 'Education',
+    remoteSupport: 'Remote support',
+    contact: 'Contact',
+    cv: 'View CV',
+    label: 'Main navigation',
+    skipToContent: 'Skip to content',
+    openMenu: 'Open menu',
+    closeMenu: 'Close menu',
+    menu: 'Menu',
+  },
+  language: {
+    es: 'ES',
+    en: 'EN',
+    gl: 'GL',
+    label: 'Language',
+  },
+  common: {
+    linkedin: 'LinkedIn',
+    downloadCv: 'Download CV',
+    sendEmail: 'Send email',
+    viewSite: 'View site',
+    viewCode: 'View code',
+    goToGithub: 'Go to GitHub',
+    downloadRustdesk: 'Download RustDesk',
+    contact: 'Contact',
+    nextSteps: 'Next steps',
+    profile: 'Profile',
+    email: 'Email',
+    location: 'Location',
+    contactMe: 'Contact me',
+  },
+  home: {
+    title: 'Full Stack web development and systems: from code to production.',
+    profileText: 'Available for freelance projects and new opportunities.',
+    pageIntroEyebrow: 'Professional profile',
+    pageIntroTitle: 'Areas where I can add value from day one',
+    pageIntroDescription: 'A combination of web development, technical background and hands-on experience in real environments.',
+  },
+  projects: {
+    eyebrow: 'Projects',
+    title: 'Featured projects',
+    description: 'Published websites, Full Stack applications and infrastructure projects. Some projects are under a non-disclosure agreement or have no public demo, so they are shown without a link.',
+    moreTitle: 'More projects on GitHub',
+    moreDescription: 'In addition to the published projects, I also keep practice and development repositories that help complete my technical profile. If you want to review them, you can go directly to my GitHub.',
+  },
+  experience: {
+    eyebrow: 'Experience',
+    title: 'Professional background and technical skills',
+    description: 'Full Stack web development, systems administration, cloud infrastructure and technical support in real production environments.',
+    skillsTitle: 'Tech stack',
+    timelineTitle: 'Professional background',
+  },
+  education: {
+    eyebrow: 'Education',
+    title: 'Studies and specialization',
+    description: 'Technical education in web development, systems and a recent React update applied to modern projects.',
+  },
+  contact: {
+    eyebrow: 'Contact',
+    title: 'Available for freelance projects and new opportunities',
+    description: 'If you have a web project, need to deploy or maintain infrastructure, or are looking for a development and systems profile for your team, write to me and I will get back to you.',
+    linkedinText: 'View professional profile',
+    githubText: 'View repositories',
+    remoteTitle: 'Remote assistance',
+    remoteDescription: 'For remote support I use RustDesk. If you need technical assistance remotely, you can download it from the official website and prepare the connection.',
+    remoteInstructions: 'View RustDesk instructions',
+  },
+  remoteSupport: {
+    eyebrow: 'Remote support',
+    title: 'Remote technical assistance with RustDesk',
+    description: 'When I need to connect remotely for review or technical support, I use RustDesk. Here are the quick steps to prepare the connection.',
+    steps: [
+      {
+        title: 'Download RustDesk',
+        description: 'Download RustDesk from the official website and install it on your computer before starting remote assistance.',
+      },
+      {
+        title: 'Open the application',
+        description: 'Once opened, your ID and temporary password will be visible so you can share the connection.',
+      },
+      {
+        title: 'Send me the details',
+        description: 'Send me your ID and temporary password by email at the moment of assistance.',
+      },
+    ],
+    downloadTitle: 'Download and contact',
+    downloadDescription: 'You can download RustDesk from its official website and, if you need assistance, email me at',
+  },
+  notFound: {
+    title: 'Page not found',
+    description: 'The page you are looking for does not exist or has moved.',
+    backHome: 'Back to home',
+  },
+  cta: {
+    title: 'Have a project in mind?',
+    description: 'Available for freelance projects and new opportunities. Write to me and I will get back to you.',
+    allChannels: 'See all contact options',
+  },
+}
+
+const gl: TranslationResource = {
+  nav: {
+    home: 'Inicio',
+    projects: 'Proxectos',
+    experience: 'Experiencia',
+    education: 'Formación',
+    remoteSupport: 'Soporte remoto',
+    contact: 'Contacto',
+    cv: 'Ver CV',
+    label: 'Navegación principal',
+    skipToContent: 'Saltar ao contido',
+    openMenu: 'Abrir menú',
+    closeMenu: 'Pechar menú',
+    menu: 'Menú',
+  },
+  language: {
+    es: 'ES',
+    en: 'EN',
+    gl: 'GL',
+    label: 'Idioma',
+  },
+  common: {
+    linkedin: 'LinkedIn',
+    downloadCv: 'Descargar CV',
+    sendEmail: 'Enviar correo',
+    viewSite: 'Ver web',
+    viewCode: 'Ver código',
+    goToGithub: 'Ir a GitHub',
+    downloadRustdesk: 'Descargar RustDesk',
+    contact: 'Contactar',
+    nextSteps: 'Seguintes pasos',
+    profile: 'Perfil',
+    email: 'Correo',
+    location: 'Localización',
+    contactMe: 'Contactar comigo',
+  },
+  home: {
+    title: 'Desenvolvemento web Full Stack e sistemas: do código á produción.',
+    profileText: 'Dispoñible para proxectos freelance e novas oportunidades.',
+    pageIntroEyebrow: 'Perfil profesional',
+    pageIntroTitle: 'Áreas nas que podo aportar valor desde o primeiro día',
+    pageIntroDescription: 'Unha combinación de desenvolvemento web, base técnica e experiencia práctica en contornos reais.',
+  },
+  projects: {
+    eyebrow: 'Proxectos',
+    title: 'Proxectos destacados',
+    description: 'Webs publicadas, aplicacións Full Stack e proxectos de infraestrutura. Algúns proxectos están baixo acordo de confidencialidade ou non teñen demo pública, polo que se mostran sen ligazón.',
+    moreTitle: 'Máis proxectos en GitHub',
+    moreDescription: 'Ademais dos proxectos publicados, tamén manteño repositorios de práctica e desenvolvemento que axudan a completar o meu perfil técnico. Se queres revisalos, podes acceder directamente ao meu GitHub.',
+  },
+  experience: {
+    eyebrow: 'Experiencia',
+    title: 'Traxectoria profesional e competencias técnicas',
+    description: 'Desenvolvemento web Full Stack, administración de sistemas, infraestrutura cloud e soporte técnico en contornos reais de produción.',
+    skillsTitle: 'Stack técnico',
+    timelineTitle: 'Traxectoria profesional',
+  },
+  education: {
+    eyebrow: 'Formación',
+    title: 'Estudos e especialización',
+    description: 'Formación técnica en desenvolvemento web, sistemas e unha actualización recente en React aplicada a proxectos modernos.',
+  },
+  contact: {
+    eyebrow: 'Contacto',
+    title: 'Dispoñible para proxectos freelance e novas oportunidades',
+    description: 'Se tes un proxecto web, precisas despregar ou manter infraestrutura, ou buscas un perfil de desenvolvemento e sistemas para o teu equipo, escríbeme e respóndoche.',
+    linkedinText: 'Ver perfil profesional',
+    githubText: 'Ver repositorios',
+    remoteTitle: 'Asistencia remota',
+    remoteDescription: 'Para soporte remoto utilizo RustDesk. Se precisas asistencia técnica a distancia, podes descargalo desde a súa web oficial e preparar a conexión.',
+    remoteInstructions: 'Ver instrucións de RustDesk',
+  },
+  remoteSupport: {
+    eyebrow: 'Soporte remoto',
+    title: 'Asistencia técnica a distancia con RustDesk',
+    description: 'Cando necesito conectarme en remoto para revisión ou soporte técnico, utilizo RustDesk. Aquí tes os pasos rápidos para preparar a conexión.',
+    steps: [
+      {
+        title: 'Descargar RustDesk',
+        description: 'Descarga RustDesk desde a web oficial e instálao no teu equipo antes de iniciar a asistencia remota.',
+      },
+      {
+        title: 'Abrir a aplicación',
+        description: 'Unha vez aberta, terás visible a túa ID e o contrasinal temporal de acceso para compartir a conexión.',
+      },
+      {
+        title: 'Enviarme os datos',
+        description: 'Envíame a túa ID e o contrasinal temporal por correo no momento da asistencia.',
+      },
+    ],
+    downloadTitle: 'Descarga e contacto',
+    downloadDescription: 'Podes descargar RustDesk desde a súa web oficial e, se precisas asistencia, escríbeme a',
+  },
+  notFound: {
+    title: 'Páxina non atopada',
+    description: 'A páxina que buscas non existe ou cambiou de enderezo.',
+    backHome: 'Volver ao inicio',
+  },
+  cta: {
+    title: 'Tes un proxecto en mente?',
+    description: 'Dispoñible para proxectos freelance e novas oportunidades. Escríbeme e respóndoche.',
+    allChannels: 'Ver todas as vías de contacto',
+  },
+}
+
+export const resources = {
+  es: { translation: es },
+  en: { translation: en },
+  gl: { translation: gl },
+} satisfies Record<Language, { translation: TranslationResource }>
+
+i18n.use(initReactI18next).init({
+  resources,
+  lng: storedLanguage || fallbackLanguage,
+  fallbackLng: 'es',
+  interpolation: {
+    escapeValue: false,
+  },
+})
+
+export default i18n
