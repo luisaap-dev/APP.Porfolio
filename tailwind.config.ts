@@ -33,7 +33,6 @@ export default {
       h1: ['clamp(2.75rem, 1.3rem + 7vw, 7.5rem)', { lineHeight: '0.92' }],
       hero: ['clamp(3.25rem, 0.9rem + 11.5vw, 9.5rem)', { lineHeight: '0.9' }],
       index: ['clamp(3.5rem, 2rem + 7vw, 8rem)', { lineHeight: '0.85' }],
-      giant: ['clamp(5.5rem, 1rem + 22vw, 24rem)', { lineHeight: '0.8' }],
     },
     // Esquinas rectas en todo
     borderRadius: {

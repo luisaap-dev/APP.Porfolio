@@ -6,7 +6,7 @@ function Footer() {
   const { t } = useTranslation()
 
   return (
-    <footer className="overflow-hidden border-t border-line">
+    <footer className="border-t border-line">
       <div className="wrap grid gap-6 py-10 sm:grid-cols-2 lg:grid-cols-12 lg:items-end">
         <p className="font-mono text-label text-muted lg:col-span-4">
           © {new Date().getFullYear()} {profile.name}
@@ -30,11 +30,6 @@ function Footer() {
             </a>
           </li>
         </ul>
-      </div>
-
-      {/* Firma: el nombre a tamaño cartel, recortado por el borde inferior */}
-      <div aria-hidden="true" className="wrap h-[0.62em] select-none overflow-hidden text-giant">
-        <p className="display whitespace-nowrap leading-[0.8] text-paper">{profile.name}</p>
       </div>
     </footer>
   )
