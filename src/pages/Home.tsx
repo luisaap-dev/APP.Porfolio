@@ -1,5 +1,5 @@
 import { useTranslation } from 'react-i18next'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import ArrowIcon from '../components/ArrowIcon'
 import PageIntro from '../components/PageIntro'
 import { focusAreas, getLocalizedValue, overview, profile } from '../data/profile'
@@ -38,10 +38,14 @@ function Home() {
             </p>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-8">
-              <a href={profile.mailHref} className="btn-signal w-full sm:w-auto">
-                {t('common.contactMe')}
+              <Link to={getRoutePath('projects', currentLanguage)} className="btn-signal w-full sm:w-auto">
+                {t('home.viewProjects')}
                 <ArrowIcon />
-              </a>
+              </Link>
+              <Link to={getRoutePath('contact', currentLanguage)} className="text-link">
+                {t('common.contact')}
+                <ArrowIcon />
+              </Link>
               <div className="flex flex-wrap gap-x-8">
                 <a href="/cv.pdf" target="_blank" rel="noreferrer" className="text-link">
                   {t('common.downloadCv')}
@@ -147,6 +151,38 @@ function Home() {
             </li>
           ))}
         </ul>
+      </section>
+
+      <section aria-labelledby="services-title" className="border-t border-line">
+        <div className="wrap py-16 lg:py-24">
+          <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
+            <div className="lg:col-span-6">
+              <p className="eyebrow">{t('home.servicesEyebrow')}</p>
+              <h2 id="services-title" className="display mt-4 text-h2 text-paper">
+                {t('home.servicesTitle')}
+              </h2>
+            </div>
+            <p className="max-w-[40rem] text-lead text-muted lg:col-span-5 lg:col-start-8">
+              {t('home.servicesDescription')}
+            </p>
+          </div>
+
+          <ul className="mt-10 grid border-t border-line sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+            {t('home.services', { returnObjects: true }).map((service, index) => (
+              <li key={service} className="flex min-h-24 items-center gap-4 border-b border-line py-5 sm:pr-6 lg:min-h-28">
+                <span aria-hidden="true" className="font-mono text-label text-signal">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <h3 className="font-semibold text-paper">{service}</h3>
+              </li>
+            ))}
+          </ul>
+
+          <Link to={getRoutePath('contact', currentLanguage)} className="btn-outline mt-8 w-full sm:w-auto">
+            {t('common.contact')}
+            <ArrowIcon />
+          </Link>
+        </div>
       </section>
     </>
   )

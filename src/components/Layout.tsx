@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Outlet, useLocation } from 'react-router-dom'
 import { getLocalizedValue, profile } from '../data/profile'
-import { getRouteKey, normalizeLanguage } from '../utils/routes'
+import { getRouteKey, getRoutePath, normalizeLanguage } from '../utils/routes'
 import ContactCta from './ContactCta'
 import Header from './Header'
 import Footer from './Footer'
@@ -18,10 +18,26 @@ function Layout() {
   }, [currentLanguage])
 
   useEffect(() => {
-    document.title =
+    const title =
       routeKey && routeKey !== 'home'
         ? `${t(`nav.${routeKey}`)} · ${profile.name}`
         : `${profile.name} · ${getLocalizedValue(profile.role, currentLanguage)}`
+    const description = t(`seo.${routeKey ?? 'home'}`)
+
+    document.title = title
+    document.querySelector<HTMLMetaElement>('meta[name="description"]')?.setAttribute('content', description)
+    document.querySelector<HTMLMetaElement>('meta[property="og:title"]')?.setAttribute('content', title)
+    document.querySelector<HTMLMetaElement>('meta[property="og:description"]')?.setAttribute('content', description)
+    document.querySelector<HTMLMetaElement>('meta[property="og:url"]')?.setAttribute(
+      'content',
+      new URL(getRoutePath(routeKey ?? 'home', currentLanguage), profile.website).href,
+    )
+    document.querySelector<HTMLMetaElement>('meta[name="twitter:title"]')?.setAttribute('content', title)
+    document.querySelector<HTMLMetaElement>('meta[name="twitter:description"]')?.setAttribute('content', description)
+    document.querySelector<HTMLLinkElement>('link[rel="canonical"]')?.setAttribute(
+      'href',
+      new URL(getRoutePath(routeKey ?? 'home', currentLanguage), profile.website).href,
+    )
   }, [routeKey, currentLanguage, t])
 
   return (

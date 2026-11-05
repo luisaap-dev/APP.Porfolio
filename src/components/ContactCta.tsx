@@ -7,22 +7,36 @@ import ArrowIcon from './ArrowIcon'
 function ContactCta() {
   const { t, i18n } = useTranslation()
   const currentLanguage = normalizeLanguage(i18n.resolvedLanguage)
+  const contactPath = getRoutePath('contact', currentLanguage)
 
   return (
-    <section aria-labelledby="contact-cta-title" className="bg-oxblood">
-      <div className="wrap grid gap-8 py-14 lg:grid-cols-12 lg:items-end lg:py-20">
-        <div className="lg:col-span-8">
-          <h2 id="contact-cta-title" className="display text-h2 text-paper">
-            {t('cta.title')}
-          </h2>
-          <p className="mt-5 max-w-[36rem] text-lead text-paper">{t('cta.description')}</p>
-        </div>
-        <div className="flex flex-col items-start gap-3 lg:col-span-4 lg:items-end">
-          <a href={profile.mailHref} className="btn-paper w-full sm:w-auto">
-            {t('common.contactMe')}
+    <section aria-label={t('common.contact')} className="bg-oxblood">
+      <div className="wrap grid gap-10 py-14 sm:grid-cols-2 lg:gap-16 lg:py-20">
+        <div className="flex flex-col items-start">
+          <h2 className="display text-h3 text-paper">{t('cta.employmentTitle')}</h2>
+          <p className="mt-4 max-w-[36rem] text-paper">{t('cta.employmentDescription')}</p>
+          <a
+            href={`${profile.mailHref}?subject=${encodeURIComponent(t('cta.employmentSubject'))}`}
+            className="btn-paper mt-6 w-full sm:mt-auto sm:w-auto"
+          >
+            {t('cta.employmentAction')}
             <ArrowIcon />
           </a>
-          <NavLink to={getRoutePath('contact', currentLanguage)} className="text-link decoration-paper">
+          <NavLink to={contactPath} className="text-link mt-4 decoration-paper">
+            {t('cta.allChannels')}
+          </NavLink>
+        </div>
+        <div className="flex flex-col items-start border-t border-paper/30 pt-8 sm:border-l sm:border-t-0 sm:pl-8 sm:pt-0 lg:pl-12">
+          <h2 className="display text-h3 text-paper">{t('cta.freelanceTitle')}</h2>
+          <p className="mt-4 max-w-[36rem] text-paper">{t('cta.freelanceDescription')}</p>
+          <a
+            href={`${profile.mailHref}?subject=${encodeURIComponent(t('cta.freelanceSubject'))}`}
+            className="btn-paper mt-6 w-full sm:mt-auto sm:w-auto"
+          >
+            {t('cta.freelanceAction')}
+            <ArrowIcon />
+          </a>
+          <NavLink to={contactPath} className="text-link mt-4 decoration-paper">
             {t('cta.allChannels')}
           </NavLink>
         </div>
