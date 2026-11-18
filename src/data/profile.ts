@@ -125,16 +125,16 @@ export const publishedProjects: Project[] = [
   {
     title: 'Pollo Kanalla',
     label: {
-      es: 'Web para restaurante',
-      en: 'Restaurant website',
-      gl: 'Web para restaurante',
+      es: 'Web y pedidos online',
+      en: 'Website & online ordering',
+      gl: 'Web e pedidos en liña',
     },
     summary: {
-      es: 'Web para el restaurante Pollo Kanalla.',
-      en: 'Website for the Pollo Kanalla restaurant.',
-      gl: 'Web para o restaurante Pollo Kanalla.',
+      es: 'Web y pedidos online para un restaurante de pollo frito en Zaragoza: carta, constructor de pedidos, pago con Stripe (tarjeta y Bizum), ticket en PDF y aviso de cada pedido a cocina por WhatsApp.',
+      en: 'Website and online ordering for a fried chicken restaurant in Zaragoza: menu, order builder, Stripe payments (card and Bizum), PDF receipts and a WhatsApp notification to the kitchen for every order.',
+      gl: 'Web e pedidos en liña para un restaurante de polo frito en Zaragoza: carta, construtor de pedidos, pagamento con Stripe (tarxeta e Bizum), ticket en PDF e aviso de cada pedido á cociña por WhatsApp.',
     },
-    stack: ['React', 'TypeScript'],
+    stack: ['Next.js', 'TypeScript', 'Stripe', 'Tailwind CSS'],
     liveUrl: 'https://pollo-kanalla.vercel.app/',
   },
   {
@@ -258,9 +258,9 @@ export const experience: Experience[] = [
       gl: 'Fene',
     },
     detail: {
-      es: 'Aplicación web Full Stack bajo NDA con React, TypeScript, Django y Node.js para la pasarela de pago. Web para Pollo Kanalla.',
-      en: 'Full Stack web application under NDA with React, TypeScript, Django and Node.js for the payment gateway. Website for Pollo Kanalla.',
-      gl: 'Aplicación web Full Stack baixo NDA con React, TypeScript, Django e Node.js para a pasarela de pagamento. Web para Pollo Kanalla.',
+      es: 'Aplicación web Full Stack bajo NDA con React, TypeScript, Django y Node.js para la pasarela de pago. Web y pedidos online para Pollo Kanalla con Next.js y Stripe.',
+      en: 'Full Stack web application under NDA with React, TypeScript, Django and Node.js for the payment gateway. Website and online ordering for Pollo Kanalla with Next.js and Stripe.',
+      gl: 'Aplicación web Full Stack baixo NDA con React, TypeScript, Django e Node.js para a pasarela de pagamento. Web e pedidos en liña para Pollo Kanalla con Next.js e Stripe.',
     },
   },
   {
@@ -447,7 +447,7 @@ export const skills: Skill[] = [
       en: 'Frontend',
       gl: 'Frontend',
     },
-    items: ['React', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap'],
+    items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap'],
   },
   {
     category: {
@@ -455,7 +455,7 @@ export const skills: Skill[] = [
       en: 'Backend',
       gl: 'Backend',
     },
-    items: ['Node.js', 'Python', 'Django', 'Flask', 'PHP', 'Java', 'SQL'],
+    items: ['Node.js', 'Python', 'Django', 'Flask', 'PHP', 'Java', 'SQL', 'Stripe'],
   },
   {
     category: {
